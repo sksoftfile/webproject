@@ -16,13 +16,13 @@ const getInfo = async(event) =>{
 
     }else{
         try{
-            let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityVal}&units=metric&appid=b14425a6554d189a2d7dc18a8e7d7263`;
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityVal}&appid=d15a6c29fbd003ab8fe45111104c42bc`;
             const response = await fetch(url);
             const data = await response.json();
             const arrData = [data];
 
            city_name.innerText = `${arrData[0].name}, ${arrData[0].sys.country}`;
-           temp_real_val.innerText = arrData[0].main.temp;
+           temp_real_val.innerText = (arrData[0].main.temp-273.15).toFixed(0);
 
             const tempMood = arrData[0].weather[0].main;
 
